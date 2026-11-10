@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "riemann-flow-se3-molecular-docking-engine"
+version = "0.1.0"
+description = "Equivariant SE(3) Riemannian Flow Matching Engine for Molecular Conformation Generation and Rigid-Body Receptor-Ligand Docking"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Ayush Kandwal", email = "ayufrom03@gmail.com" }
+]
+keywords = ["riemannian-geometry", "flow-matching", "se3-group", "molecular-docking", "lie-algebra", "drug-discovery"]
+dependencies = [
+    "numpy>=1.22.0",
+    "scipy>=1.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.scripts]
+riemann-flow = "riemann_flow_se3_molecular_docking_engine.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/riemann_flow_se3_molecular_docking_engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["src"]
